@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//ADDING COMMENT TO TEST MERGING
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
