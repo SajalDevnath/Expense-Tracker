@@ -70,17 +70,17 @@ public class DashboardController : Controller
             })
             .ToList();
 
-        //Expense
-
+        // Expense
         List<SplineChartData> ExpenseSummary = SelectedTransactions
-            .Where(i => i.Category.Type == "Income")
+            .Where(i => i.Category.Type == "Expense") // Filter transactions with Category.Type == "Expense"
             .GroupBy(j => j.Date)
             .Select(k => new SplineChartData()
             {
                 day = k.First().Date.ToString("dd-MMM"),
-                income = k.Sum(l => l.Amount)
+                expense = k.Sum(l => l.Amount) // Use l.Amount as the expense value
             })
             .ToList();
+
 
         //Combine Income & Expense
         string[] Last7Days = Enumerable.Range(0, 7)
@@ -98,6 +98,13 @@ public class DashboardController : Controller
                                       income = income == null ? 0 : income.income,
                                       expense = expense == null ? 0 : expense.expense,
                                   };
+
+        //Recent Transactions
+        ViewBag.RecentTransactions = await _context.Transactions
+            .Include(i => i.Category)
+            .OrderByDescending(j => j.Date)
+            .Take(5)
+            .ToListAsync();
 
         return View();
     }  
