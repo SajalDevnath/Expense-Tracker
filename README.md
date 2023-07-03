@@ -24,7 +24,6 @@ Expense Tracker is a web application developed using ASP.NET Core and Syncfusion
  - ASP.NET Core: The web application framework used for developing the Expense Tracker.
 
 - Syncfusion Components: Syncfusion provides a set of powerful UI components that enhance the functionality and appearance of the application.
-- Entity Framework Core: Used for database management and interaction.
 - HTML, CSS, and JavaScript: Front-end technologies used for designing and enhancing the user interface.
 - SQL Server Management Studio (SSMS): Used for database management and interaction.
 
